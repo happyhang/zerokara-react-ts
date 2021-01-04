@@ -196,7 +196,8 @@ module.exports = env => ({
     }),
     new EsLintPlugin({
       eslintPath: require.resolve('eslint'),
-      overrideConfigFile: "./config/.eslintrc.json"
+      overrideConfigFile: "./config/.eslintrc.json",
+      extensions: ['js', 'jsx', 'ts', 'tsx']
     }),
     new TsForkChecker(),
     // Extract css to separate files.

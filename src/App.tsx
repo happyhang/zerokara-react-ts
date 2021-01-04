@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import * as React from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
