@@ -1,0 +1,33 @@
+{
+  "include": [
+    "./src/**/*",
+  ],
+  "exclude": [],
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react",
+    "module": "esnext",
+    "target": "es2015",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "paths": {
+      "common/*": [
+        "./src/common/*"
+      ],
+      "context/*": [
+        "./src/context/*"
+      ],
+      "assets/*": [
+        "./src/assets/*"
+      ],
+    }
+  }
+}

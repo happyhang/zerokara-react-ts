@@ -1,0 +1,9 @@
+{
+    "eslint.options": { "configFile": "./config/.eslintrc.json" },
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "window.zoomLevel": 0,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+}
