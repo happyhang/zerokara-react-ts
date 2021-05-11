@@ -23,7 +23,7 @@
     "immer": "^8.0.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "luxon": "^1.25.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.8",
