@@ -2,14 +2,12 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import { bindLoadingActions } from 'common/util/loading';
-import {
-  INIT, setInitialState, setPageLoading,
-} from './examplePageActions';
+import { exampleActions } from './examplePageSlice';
 
 function* onInit(): Generator {
-  yield put(setInitialState());
+  yield put(exampleActions.setInitialState());
 
-  const [, loadingFail, loadingSuccess] = bindLoadingActions(setPageLoading);
+  const [, loadingFail, loadingSuccess] = bindLoadingActions(exampleActions.setPageLoading);
   try {
     // TODO Load some data.
     yield put(loadingSuccess());
@@ -19,5 +17,5 @@ function* onInit(): Generator {
 }
 
 export default function* mainSaga(): Generator {
-  yield takeLatest(INIT, onInit);
+  yield takeLatest(exampleActions.init.type, onInit);
 }

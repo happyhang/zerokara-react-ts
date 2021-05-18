@@ -72,7 +72,9 @@ This boilerplate will have the following dependencies specified in `package.json
 - Redux
   - react-redux
 - Webpack 5
-  - ts-loader
+  - webpack-dev-server 4.0 beta 3
+  - webpack-cli
+  - ts-loader (TypeScript 4.2)
     - ts-nameof
   - css-loader
   - sass-loader
@@ -84,11 +86,11 @@ This boilerplate will have the following dependencies specified in `package.json
     - cssnano
   - eslint-webpack-plugin
   - clean-webpack-plugin
+  - copy-webpack-plugin
   - html-webpack-plugin
   - mini-css-extract-plugin
-  - optimize-css-assets-webpack-plugin
   - terser-webpack-plugin
-  - webpack-cli
+  - dotenv-webpack
 
 ### Redux
 
@@ -101,7 +103,7 @@ This boilerplate will have the following dependencies specified in `package.json
 
 Utilizing CSS Module to separate CSS classes per component. [Read this](https://github.com/gajus/babel-plugin-react-css-modules) for more details.
 
-- Bootstrap 4.4
+- Bootstrap 5.0
 - node-sass
 - clsx
 - react-popper
@@ -111,7 +113,7 @@ Utilizing CSS Module to separate CSS classes per component. [Read this](https://
 
 - react-router 5.2
   - connected-react-router
-  - history@4.10.1
+  - history (Must be version 4 for browser router to work)
   - react-router-dom
 
 ### Form

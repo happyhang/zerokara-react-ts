@@ -3,6 +3,7 @@ import { PayloadActionCreator, PayloadAction } from '@reduxjs/toolkit';
 
 export interface LoadingData {
   isLoading: boolean,
+  isSuccess: boolean,
   isError: boolean,
   message: string,
   data: unknown,
@@ -10,6 +11,7 @@ export interface LoadingData {
 
 export const initialLoadingState: LoadingData = ({
   isLoading: false,
+  isSuccess: false,
   isError: false,
   message: '',
   data: null,
@@ -17,6 +19,7 @@ export const initialLoadingState: LoadingData = ({
 
 export const initialLoadingTrueState: LoadingData = ({
   isLoading: true,
+  isSuccess: false,
   isError: false,
   message: '',
   data: null,
@@ -36,6 +39,7 @@ export const loadingFail = (message?: string, data?: unknown): LoadingData => ({
 
 export const loadingSuccess = (message?: string, data?: unknown): LoadingData => ({
   ...initialLoadingState,
+  isSuccess: true,
   message: message || '',
   data,
 });

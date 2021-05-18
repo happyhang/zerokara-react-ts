@@ -5,6 +5,7 @@ const path = require('path');
 const tsNameof = require("ts-nameof");
 const TsForkChecker = require('fork-ts-checker-webpack-plugin');
 const EsLintPlugin = require('eslint-webpack-plugin');
+const DotenvPlugin = require('dotenv-webpack');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -19,9 +20,6 @@ const appSrc = path.resolve('./src');
 // Define the public asset folder.
 const publicResourceSrc = path.resolve('./public');
 const publicHtml = path.join(appSrc, 'index.html');
-
-// Get the environment variables
-const getEnvVariables = env => require(`./env.${(env && env.APP_ENV) || 'dev'}`);
 
 // Storing CSS preprocessors for reuse.
 const cssPreprocessors = [{
@@ -38,7 +36,12 @@ const cssPreprocessors = [{
     }
   }
 },
-  'sass-loader?sourceMap',
+{
+  loader: "sass-loader",
+  options: {
+    sourceMap: true,
+  },
+},
 {
   loader: 'sass-resources-loader',
   options: {
@@ -164,7 +167,7 @@ module.exports = env => ({
   },
   plugins: [
     // Define additional environment variables to be used in app.
-    new webpack.EnvironmentPlugin(getEnvVariables(env)),    
+    new DotenvPlugin({ allowEmptyValues: false }),
     // Copy public assets.
     new CopyWebpackPlugin({
       patterns: [

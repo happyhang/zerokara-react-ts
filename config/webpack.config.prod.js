@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const tsNameof = require("ts-nameof");
 const TsForkChecker = require('fork-ts-checker-webpack-plugin');
 const EsLintPlugin = require('eslint-webpack-plugin');
-const webpack = require('webpack');
+const DotenvPlugin = require('dotenv-webpack');
 const path = require('path');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -23,9 +23,6 @@ const appSrc = path.resolve('./src');
 const publicResourceSrc = path.resolve('./public');
 const publicHtml = path.join(appSrc, 'index.html');
 
-// Get the environment variables
-const getEnvVariables = env => require(`./env.${(env && env.APP_ENV) || 'staging'}`);
-
 // Storing CSS preprocessors for reuse.
 const cssPreprocessors = [{
   loader: 'postcss-loader',
@@ -41,7 +38,12 @@ const cssPreprocessors = [{
     }
   }
 },
-  'sass-loader?sourceMap',
+{
+  loader: "sass-loader",
+  options: {
+    sourceMap: true,
+  },
+},
 {
   loader: 'sass-resources-loader',
   options: {
@@ -169,7 +171,7 @@ module.exports = env => ({
   },
   plugins: [
     // Define additional environment variables to be used in app.
-    new webpack.EnvironmentPlugin(getEnvVariables(env)),
+    new DotenvPlugin({ allowEmptyValues: false }),
     // Delete previous built files before building a new one.
     new CleanWebpackPlugin(),
     // Copy public assets.

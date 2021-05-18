@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoadingSwitch from 'common/ui/LoadingSwitch';
 
 import classes from './examplePage.module.scss';
-import { init } from './examplePageActions';
+import { exampleActions } from './examplePageSlice';
 import { ExamplePageReduxState } from './examplePageTypes';
 
 const ExamplePage: React.FC = () => {
@@ -19,7 +19,7 @@ const ExamplePage: React.FC = () => {
   // When user visits the page, dispatch an action immediately to inform
   // saga to do page initialisation (mainly to load data needed).
   React.useEffect(() => {
-    dispatch(init());
+    dispatch(exampleActions.init());
   }, []);
 
   return (
